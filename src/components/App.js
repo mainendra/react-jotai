@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Provider, useAtom } from 'jotai';
 
-import { filteredCountriesAtom, filterAtom } from '../store';
+import { filteredCountriesAtom, filterAtom, countriesAtom } from '../store';
 
 import './App.css';
 
@@ -32,6 +32,8 @@ function CountriesTable() {
 }
 
 function App() {
+    const [, fetchCountries] = useAtom(countriesAtom);
+    useEffect(fetchCountries, []);
     return (
         <div className="App">
             <FilterInput />
